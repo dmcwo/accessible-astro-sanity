@@ -1,3 +1,6 @@
+# accessible astro sanity starter
+* experimenting with connecting accessible astro with sanity cms
+
 # Accessible Astro Starter
 
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
