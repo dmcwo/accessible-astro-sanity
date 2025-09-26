@@ -19,9 +19,11 @@ export async function getStaticPaths() {
   ]
 
   return projects.map((project, index) => {
+    // Prefer a front-matter `featuredImage` if present, otherwise use the indexed fallback
+    const fmFeatured = project.data?.featuredImage ?? null
     const projectWithImage = {
       ...project,
-      featuredImage: projectImages[index % projectImages.length].src,
+      featuredImage: fmFeatured || projectImages[index % projectImages.length].src,
     }
 
     return {
@@ -38,10 +40,11 @@ interface Props {
 const { project } = Astro.props
 const { Content } = await render(project)
 
+// Build author object with sensible defaults for portfolio site owner
 const author = {
-  name: project.data.author,
-  image: '/projects/project-image-1.png',
-  bio: 'Project Creator',
+  name: project.data.author || 'Doug Worsham',
+  image: project.data.authorImage || '/doug-profile-working.jpg',
+  bio: project.data.authorRole || 'Project Creator',
 }
 ---
 
@@ -52,6 +55,7 @@ const author = {
     author={author}
     bgType="bordered"
     featuredImage={project.featuredImage}
+    showFeaturedImage={false}
   />
   <section class="my-12">
     <div class="narrow space-content container">

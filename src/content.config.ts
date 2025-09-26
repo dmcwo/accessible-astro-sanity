@@ -9,9 +9,11 @@ const projects = defineCollection({
   loader: glob({ pattern: '**/*.mdx', base: './src/content/projects' }),
   schema: z.object({
     title: z.string(),
-    author: z.string(),
+    // `author` may be omitted; pages will default to 'Doug Worsham'
+    author: z.string().optional(),
     description: z.string(),
     featuredImage: z.string().optional(),
+    authorRole: z.string().optional(),
   }),
 })
 

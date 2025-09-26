@@ -44,9 +44,13 @@ interface Props {
    * Whether to show the breadcrumbs
    */
   showBreadcrumbs?: boolean
+  /**
+   * Whether to render the featured image in the header
+   */
+  showFeaturedImage?: boolean
 }
 
-const { class: className, title, subtitle, bgType, showBreadcrumbs = true, featuredImage, author } = Astro.props
+const { class: className, title, subtitle, bgType, showBreadcrumbs = true, featuredImage, author, showFeaturedImage = true } = Astro.props
 
 // Sanitize subtitle HTML if present
 const sanitizedSubtitle: string = subtitle
@@ -93,7 +97,7 @@ const sanitizedSubtitle: string = subtitle
   <div class:list={['py-16', bgType && `bg-${bgType}`]}>
     <div class="space-content container">
       {
-        featuredImage && (
+        showFeaturedImage && featuredImage && (
           <div class="featured-image-container mb-8">
             <Image
               src={featuredImage}
@@ -110,7 +114,7 @@ const sanitizedSubtitle: string = subtitle
       {
         author && (
           <div class="mt-6 flex items-center">
-            <Avatar title={author.name} image={author.image} subtitle={author.bio} />
+            <Avatar title={author.name} img={author.image} subtitle={author.bio} />
           </div>
         )
       }

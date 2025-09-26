@@ -16,13 +16,15 @@
         "featuredImage": {
           "type": "string"
         },
+        "authorRole": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         }
       },
       "required": [
         "title",
-        "author",
         "description"
       ],
       "additionalProperties": false
