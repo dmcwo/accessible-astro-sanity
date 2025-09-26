@@ -6,50 +6,129 @@ import { Image } from 'astro:assets'
 /**
  * Hero Component
  *
- * @description A component that displays a hero section with a title, description, and image
+ * @description A flexible hero section component with configurable content and buttons
  */
 interface Props {
   /**
-   * The source URL for the image
+   * The main title text (can include HTML)
    */
-  src?: string
+  title?: string
+  /**
+   * Subtitle or tagline 
+   */
+  subtitle?: string
+  /**
+   * The source URL for the hero image
+   */
+  imageSrc?: string
+  /**
+   * Alt text for the image
+   */
+  imageAlt?: string
+  /**
+   * Primary button configuration
+   */
+  primaryButton?: {
+    text: string
+    href: string
+    icon?: string
+    external?: boolean
+  }
+  /**
+   * Secondary button configuration
+   */
+  secondaryButton?: {
+    text: string
+    href: string
+    icon?: string
+    external?: boolean
+  }
+  /**
+   * Whether to show the image
+   */
+  showImage?: boolean
+  /**
+   * Compact layout (smaller spacing and type)
+   */
+  compact?: boolean
 }
 
-const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
-const siteTitle = "Your Site Name";
+const { 
+  title = "Welcome to Our Site",
+  subtitle,
+  imageSrc = '/astronaut-hero-img.webp',
+  imageAlt = "",
+  primaryButton,
+  secondaryButton,
+  showImage = true
+  , compact = false
+}: Props = Astro.props
 ---
 
-<section class="hero my-24">
+<section class={compact ? 'hero my-12' : 'hero my-24'}>
   <div class="container">
-    <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
-      <div class="flex flex-col items-center gap-8 md:items-start">
-        <h1 class="text-center text-6xl md:text-left lg:text-8xl">
-          <slot><span class="text-gradient">Accessible Starter: </span>{siteTitle}</slot>
+    <div class={`grid grid-cols-1 items-center ${compact ? 'gap-12 lg:grid-cols-2' : 'gap-24 lg:grid-cols-2'}`}>
+      <div class={`flex flex-col items-center ${compact ? 'gap-4' : 'gap-8'} md:items-start`}>
+        <h1 class={compact ? 'text-center text-5xl md:text-left lg:text-6xl' : 'text-center text-6xl md:text-left lg:text-8xl'}>
+          <slot>
+            <span set:html={title} />
+          </slot>
         </h1>
-        <div class="flex flex-col gap-3 min-[500px]:flex-row">
-          <Link
-            href="https://github.com/incluud/accessible-astro-starter"
-            isButton
-            type="primary"
-            animateOnHover
-            animationType="boop"
-          >
-            <Icon aria-hidden="true" name="lucide:star" size="1.5rem" />
-            Star on GitHub
-          </Link>
-          <Link
-            href="https://accessible-astro.incluud.dev/"
-            isButton
-            type="secondary"
-            animateOnHover
-            animationType="boop"
-          >
-            <Icon aria-hidden="true" name="lucide:bookmark" size="1.5rem" />
-            Read the docs
-          </Link>
-        </div>
+        
+        {subtitle && (
+          <p class={compact ? 'text-center text-lg md:text-left text-neutral-600 dark:text-neutral-300' : 'text-center text-xl md:text-left text-neutral-600 dark:text-neutral-300'}>
+            {subtitle}
+          </p>
+        )}
+        
+        {(primaryButton || secondaryButton) && (
+          <div class={`flex flex-col ${compact ? 'gap-2' : 'gap-3'} min-[500px]:flex-row`}>
+            {primaryButton && (
+              <Link
+                href={primaryButton.href}
+                isButton
+                type="primary"
+                animateOnHover
+                animationType="boop"
+                isExternal={primaryButton.external}
+              >
+                {primaryButton.icon && (
+                  <Icon aria-hidden="true" name={primaryButton.icon} size="1.5rem" />
+                )}
+                {primaryButton.text}
+              </Link>
+            )}
+            
+            {secondaryButton && (
+              <Link
+                href={secondaryButton.href}
+                isButton
+                type="secondary"
+                animateOnHover
+                animationType="boop"
+                isExternal={secondaryButton.external}
+              >
+                {secondaryButton.icon && (
+                  <Icon aria-hidden="true" name={secondaryButton.icon} size="1.5rem" />
+                )}
+                {secondaryButton.text}
+              </Link>
+            )}
+          </div>
+        )}
       </div>
-      <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={600} loading="eager" />
+      
+      {showImage && (
+        <Image 
+          class={compact ? 'hidden lg:block max-h-[420px] object-contain' : 'hidden lg:block'} 
+          src={imageSrc} 
+          alt={imageAlt} 
+          decoding="async" 
+          width={compact ? 640 : 800} 
+          height={compact ? 420 : 600} 
+          loading="eager" 
+        />
+      )}
     </div>
   </div>
 </section>

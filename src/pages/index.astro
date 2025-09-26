@@ -11,43 +11,43 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <DefaultLayout title="Home">
-  <Hero />
-  <section class="my-64">
+  <Hero
+    title="Let's expand the adjacent possible."
+    subtitle="👋 Hi! I'm Doug. I help organizations and teams create the infrastructure for sustainable change. Want to work together? Let's turn your impossible challenges into collaborative breakthroughs."
+    imageSrc="/doug-profile-working.jpg"
+    imageAlt="Cartoon Doug at work"
+    compact
+  />
+  <section class="my-32">
     <div class="container">
-      <Heading level="h2" class="mb-8">Features</Heading>
+      <Heading level="h2" class="mb-8">Here's what I'll bring:</Heading>
+      <div class="my-8"><p>I believe that magic can happen when leaders and teams have the <em>range</em> of experiences needed to approach challenges from unexpected angles. As a professional unicorn 🦄 myself, I love to help teams use their many skills to build bridges, make connections, and innovate in the intersections.</p></div>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        <Feature title="I'm testing this nice feature">
-          This is the paragraph part.
+        <Feature icon="lucide:rocket" title="Design Team Leadership">
+          Ready to build a team? I've launched two award-winning creative teams, helping early-career professionals become confident leaders.
         </Feature>
-        <Feature icon="lucide:accessibility" title="Accessible by default">
-          Keyboard navigation, focus indicators, ARIA labels, semantic HTML, and more. This theme is designed to be
-          inclusive.
+        <Feature icon="lucide:tool-case" title="Restorative Problem-Solving">
+          Got an "impossible" challenge? I specialize in turning broken systems into sustainable solutions. Let's tackle what others think can't be fixed.
         </Feature>
-        <Feature icon="lucide:puzzle" title="A11Y components">
-          25+ components and counting, all tried and tested for the most optimal accessible experience for your
-          visitors.
+        <Feature icon="lucide:heart-handshake" title="Systems Thinking + Human Heart">
+          I architect scalable platforms while centering human potential. Let's build systems that grow because people love to use them.
         </Feature>
-        <Feature icon="lucide:moon" title="Dark mode">
-          Fully integrated Dark mode gives your users the choice for their favorite viewing mode.
+        <Feature icon="lucide:landmark" title="Governance (that works)">
+          <!--Committees that can't make decisions aren't fun. I design frameworks that establish shared purpose, streamline decision-making, and (if you can believe it) make governance meetings <em>enjoyable</em>.-->
+          Committees that can't make decisions aren't fun. I ground governance work in shared purpose and streamlined decision-making.
         </Feature>
-        <Feature icon="lucide:paintbrush" title="Tailwind 4.0">
-          Use the power of Tailwind to greatly improve your productivity and enhance your developer workflow.
+        <Feature icon="lucide:blocks" title="Learning Experience Design">
+          Let's build new approaches to learning! I've made podcasts, student-centered learning platforms, open educational resources, and more. 
         </Feature>
-        <Feature icon="lucide:sparkles" title="Prettier">
-          Less worry about formatting your code, let the Astro Prettier integration do the heavy lifting.
+        <Feature icon="lucide:squares-intersect" title="Inclusive Design Strategy">
+          Together, we can make accessibility essential to every process. I help teams work through backlogs and build better from the get-go.
         </Feature>
-        <Feature icon="lucide:code" title="ESLint">
-          Lint your code with strict a11y settings to ensure you stay on track with the WCAG standards.
-        </Feature>
-        <Feature icon="lucide:bookmark" title="Blog & portfolio">
-          This theme comes with a fully integrated blog and portfolio, dynamic pages and SEO optimization.
-        </Feature>
-        <Feature icon="lucide:file-text" title="Markdown & MDX">
-          Easily use .md and .mdx pages to build your websites or use it with Netlify CMS.
-        </Feature>
-        <Feature icon="lucide:blocks" title="Design system">
-          The theme offers some very handy utilities to help you build your website faster.
-        </Feature>
+        <!--<Feature icon="lucide:sprout" title="Communities of Practice">
+         Whether it's connecting faculty with students or IT with public services, let's create the conditions for authentic collaboration.
+        </Feature>-->
+        <!--<Feature icon="lucide:binoculars" title="Participatory Research">
+          What do your users really need? I leverage mixed-methods research approaches to amplify community voices through rapid research, usability studies, and participatory design workshops.
+        </Feature>-->
       </div>
     </div>
   </section>
