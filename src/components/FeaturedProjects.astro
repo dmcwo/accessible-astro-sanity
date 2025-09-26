@@ -2,6 +2,7 @@
 import { Card, Heading, Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
 
 // Import images directly for optimization
 import projectImage1 from '@assets/images/projects/project-image-1.png'
@@ -36,11 +37,16 @@ const { class: className, limit = 3, title = 'Featured projects' } = Astro.props
 const projects = await getCollection('projects')
 const projectImages = [projectImage1, projectImage2, projectImage3]
 
-// Limit projects and add featured images
-const featuredProjects = projects.slice(0, limit).map((project, index) => ({
-  ...project,
-  featuredImage: projectImages[index % projectImages.length],
-}))
+// Limit projects and add featured images (prefer front-matter `featuredImage` string)
+const featuredProjects = projects.slice(0, limit).map((project, index) => {
+  const fmImage = project.data?.featuredImage ?? null
+  return {
+    ...project,
+    // If front-matter provides a string path, use that; otherwise use the imported module fallback
+    featuredImage: fmImage || projectImages[index % projectImages.length],
+    featuredImageIsString: Boolean(fmImage),
+  }
+})
 ---
 
 <section class:list={[className, 'my-64']}>
