@@ -55,7 +55,7 @@ const author = {
     author={author}
     bgType="bordered"
     featuredImage={project.featuredImage}
-    showFeaturedImage={false}
+    showFeaturedImage={project.data.showHeaderImage ?? false}
   />
   <section class="my-12">
     <div class="narrow space-content container">

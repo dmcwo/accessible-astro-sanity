@@ -98,16 +98,24 @@ const sanitizedSubtitle: string = subtitle
     <div class="space-content container">
       {
         showFeaturedImage && featuredImage && (
-          <div class="featured-image-container mb-8">
-            <Image
-              src={featuredImage}
-              alt=""
-              width={1200}
-              height={250}
-              class="h-[250px] w-full rounded-lg object-cover"
-            />
-          </div>
-        )
+            <div class="featured-image-container mb-8">
+              {
+                // If featuredImage is a string (public path from front-matter), render a plain img.
+                // If it's an imported module (asset import), use the astro:assets Image for optimization.
+                typeof featuredImage === 'string' ? (
+                  <img src={featuredImage} alt="" class="h-[250px] w-full rounded-lg object-cover" />
+                ) : (
+                  <Image
+                    src={featuredImage}
+                    alt=""
+                    width={1200}
+                    height={250}
+                    class="h-[250px] w-full rounded-lg object-cover"
+                  />
+                )
+              }
+            </div>
+          )
       }
       <Heading level="h1">{title}</Heading>
       {sanitizedSubtitle && <p class="text-2xl" set:html={sanitizedSubtitle} />}

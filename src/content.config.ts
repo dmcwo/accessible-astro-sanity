@@ -14,6 +14,7 @@ const projects = defineCollection({
     description: z.string(),
     featuredImage: z.string().optional(),
     authorRole: z.string().optional(),
+    showHeaderImage: z.boolean().optional(),
   }),
 })
 

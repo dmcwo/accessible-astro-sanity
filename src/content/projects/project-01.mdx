@@ -3,26 +3,40 @@ title: WI+RE at UCLA
 author: Doug Worsham
 authorRole: Co-Founder, Creative Team Lead (2014-2021)
 description: Quick and practical research and writing tutorials, collaboratively designed by students at UCLA. 
-featuredImage: "/projects/project-image-1.png"
+featuredImage: "/projects/wire-creative-team.jpg"
+showHeaderImage: false
 ---
 import BlockQuote from '@components/BlockQuote.astro'
 import BreakoutImage from '@components/BreakoutImage.astro'
 import { Image } from 'astro:assets'
+import CaptionedImage from '@components/CaptionedImage.astro'
 import Counter from '@components/Counter.astro'
 import { Heading } from 'accessible-astro-components'
 
 ## Project Overview
 
-WI+RE began with a simple but powerful premise: learning is most compelling when learners are leaders, designers, and co-creators of their learning experiences. As co-founder, I developed the organizational structure and pedagogical framework that would allow this vision to thrive within an academic library setting. Working closely with our first cohort of learner-designers, I created a design process that centers learner needs through tools like empathy mapping, learning journey mapping, and "4 Paths" prototyping.
+WI+RE began with a powerful question: what if learners could be the leaders, designers, and co-creators of their learning experiences?
 
-<BreakoutImage src="/projects/project-image-1.png" />
+As co-founder and Creative Team Lead from 2014-2021, I developed the organizational structure and pedagogical framework to grow WI+RE from a scrappy, DIY experiment to a lasting, campus-wide community.
 
+Working closely with our learner-designers, I created a design process that centers learner needs through tools like empathy mapping, learning journey mapping, and "4 Paths" prototyping. I connected with library stakeholders and campus partners across disciplines to provide feedback, guidance, and subject matter expertise. 
+
+With short tutorials and course-ready workshops, I led community and faculty outreach efforts to integrate WI+RE resources into course curricula in the humanities, sciences, and social sciences. WI+RE resources are still used today in everything from 1st-year writing to senior capstone classes. 
+
+WI+RE's open educational resources have grown to have a global reach, and our learner-desiger alums have gone on to leadership, design, education, and creative roles at Google, Yale, Teach for America, and beyond! 
+
+<BreakoutImage src="/projects/wire-creative-team.jpg" alt="The WI+RE Creative Team at the UCLA Biomedical Library, paper prototypes in the background." caption="WI+RE Creative Team at the UCLA Biomedical Library" captionType="editorial" />
+
+## Impact
   <section class="mt-64 mb-32">
     <div class="container">
-      <div class="grid grid-cols-1 gap-12 sm:grid-cols-1 md:grid-cols-3">
+      <div class="grid grid-cols-1 gap-16 sm:grid-cols-1 md:grid-cols-2">
+        <Counter count="75" title="Published" sub="Open Educational Resources (OERs)" />
+        <Counter count="20" title="5-Star" sub="reviews on merlot.org" />
         <Counter count="9346+" title="Workshops" sub="completed in UCLA classes" />
-        <Counter count="637k+" title="Views" sub="on YouTube" />
-        <Counter count="75" title="Open Educational Resources" sub="" />
+        <Counter count="376k+" title="YouTube Views" sub="on YouTube" />
+        <Counter count="431k+" title="Global" sub="website visits" />
+        <Counter count="21" title="Alumni" sub="" />
       </div>
     </div>
   </section>
@@ -30,46 +44,55 @@ WI+RE began with a simple but powerful premise: learning is most compelling when
 ## Project Gallery
 
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-  <Image
-    src="/projects/project-image-1.png"
-    alt="Smart home assistant interface showing voice command visualization"
+  <CaptionedImage
+    src="/projects/wire-website.png"
+    alt="The WI+RE website: Quick and practical research and writing tutorials, collaboratively designed by students at UCLA."
     width={1200}
     height={600}
     class="h-[250px] w-full rounded-lg object-cover"
+    caption="The WI+RE Website is built in Jekyll and hosted on GitHub pages. I developed custom content collections for tutorials, workshops, and team members to allow for easy editing and updating."
+    captionType="editorial"
   />
-  <Image
-    src="/projects/project-image-2.png"
-    alt="User interacting with the smart home system via voice commands"
+  <CaptionedImage
+    src="/projects/featured-workshops.png"
+    alt="Featured Workshops: Getting Started with Research at UCLA and Finding Sources with the UCLA Library"
     width={1200}
     height={600}
     class="h-[250px] w-full rounded-lg object-cover"
+    caption="The Cornerstone Research Workshop series featured was developed in collaboration with the Undergraduate Research Centers. It includes 7 research and writing workshops that can be directly integrated into the course management system as reqired or optional assignments."
+    captionType="editorial"
   />
-  <Image
-    src="/projects/project-image-3.png"
-    alt="Haptic feedback device component of the smart home system"
+    <CaptionedImage
+    src="/projects/wire-process.png"
+    alt="A variety of paper prototypes and empathy maps, most of them hand-drawn."
     width={1200}
     height={600}
     class="h-[250px] w-full rounded-lg object-cover"
+    caption="Paper prototyping is central to WI+RE's design process. In an increasingly digital and mediated world, I wanted our process to begin with the freedom of sketching and brainstorming on paper."
+    captionType="editorial"
   />
-  <Image
-    src="/projects/project-image-4.png"
-    alt="Dashboard showing analytics of voice command usage patterns"
+  <CaptionedImage
+    src="/projects/featured-tutorials.png"
+    alt="Featured tutorials: Creating Literature Reviews, Explanding Perspectives, and Wheel of Sources"
     width={1200}
     height={600}
     class="h-[250px] w-full rounded-lg object-cover"
+    caption="WI+RE tutorials were developed in exceptionally varied formats, from short videos and screencasts to custom animation and fully interactive games. To create them, WI+RE's learner-designers developed a wide range of prototyping, media production, and instructional design skills."
+    captionType="editorial"
   />
 </div>
 
 ## Testimonials
 
-<BlockQuote author="Quote name, Quote role">
-  Quote here
+
+<BlockQuote author="Cymfenee Dean-Phifer, Learner-Designer for UCLA Science Library">
+  This is my first time in such a safe, accepting environment where I’ve had the agency to create to my heart’s content. I love the skills I’ve gained, the projects I’ve made, and the fact that everyone can contribute their thoughts and ideas to each project. I’m my own worst critic, so the anti-perfectionism value has been amazing for me and has allowed me to explore a more curious side of myself. I’m more open to trying new things, and being okay with asking for help.
 </BlockQuote>
 
-<BlockQuote author="Quote name, Quote role">
-  Quote here
+<BlockQuote author="Hannah Sutherland, Instructional Design and Technology Consultant for Powell Library">
+  The WI+RE way of providing empathetic feedback at all stages of a project has shown me what a gift it is to be vulnerable with your team and with your work. I no longer agonize over whether a project is “done” but instead, I consider whether it has incorporated as many voices as possible." 
 </BlockQuote>
 
-<BlockQuote author="Quote name, Quote role">
-  Quote here
+<BlockQuote author="Jen Pierre, PhD. User Experience Researcher, Google">
+  WI+RE has had an incredibly positive influence on my current role post-graduation and my experiences leading up to it! The foundational UX and instructional design skill set WI+RE applies to our training and projects was exactly the type of experience I needed, and my interviewers were very impressed with the project development and impact I described. I do not think I would have been nearly as competitive an applicant for my current role without my time at WI+RE.
 </BlockQuote>
