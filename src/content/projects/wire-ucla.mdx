@@ -2,7 +2,7 @@
 title: WI+RE at UCLA
 author: Doug Worsham
 authorRole: Co-Founder, Creative Team Lead (2014-2021)
-description: Quick and practical research and writing tutorials, collaboratively designed by students at UCLA. 
+description: Learner-led instructional design community creating open educational resources for research and writing. 
 featuredImage: "/projects/wire-creative-team.jpg"
 showHeaderImage: false
 ---
@@ -11,7 +11,8 @@ import BreakoutImage from '@components/BreakoutImage.astro'
 import { Image } from 'astro:assets'
 import CaptionedImage from '@components/CaptionedImage.astro'
 import Counter from '@components/Counter.astro'
-import { Heading } from 'accessible-astro-components'
+import { Heading, Badge } from 'accessible-astro-components'
+import Badges from '@components/Badges.astro'
 
 ## Project Overview
 
@@ -59,7 +60,7 @@ WI+RE's open educational resources have grown to have a global reach, and our le
     width={1200}
     height={600}
     class="h-[250px] w-full rounded-lg object-cover"
-    caption="The Cornerstone Research Workshop series featured was developed in collaboration with the Undergraduate Research Centers. It includes 7 research and writing workshops that can be directly integrated into the course management system as reqired or optional assignments."
+    caption="The Cornerstone Research Workshop series was developed in collaboration with the Undergraduate Research Centers. It includes 7 research and writing workshops that can be directly integrated into courses as reqired or optional assignments."
     captionType="editorial"
   />
     <CaptionedImage
@@ -96,3 +97,69 @@ WI+RE's open educational resources have grown to have a global reach, and our le
 <BlockQuote author="Jen Pierre, PhD. User Experience Researcher, Google">
   WI+RE has had an incredibly positive influence on my current role post-graduation and my experiences leading up to it! The foundational UX and instructional design skill set WI+RE applies to our training and projects was exactly the type of experience I needed, and my interviewers were very impressed with the project development and impact I described. I do not think I would have been nearly as competitive an applicant for my current role without my time at WI+RE.
 </BlockQuote>
+
+## Project Toolbox
+
+Leading WI+RE was amongst rewarding times of my life. I was constantly learning new skills, technologies, and approaches. Here are just a few of the things I learned and taught along the way.
+
+
+<Badges categories={{
+  'Technical Skills': [
+     'Jekyll',
+  'GitHub Pages',
+  'HTML/CSS',
+  'JavaScript',
+  'Reveal.js',
+  'H5P',
+  'Audacity',
+  'Video production & editing',
+  'Animation',
+  'Web development',
+  'Git/GitHub',
+  'WCAG 2.0 accessibility standards',
+  'Responsive web design',
+  ],
+  'Design & Media Production': [
+    'User experience (UX) design',
+    'Instructional design',
+    'Graphic design',
+    'Video production',
+    'Audio engineering',
+    'Social media content creation',
+    'Interactive media design',
+    'Animation',
+    'Storyboarding',
+  ],
+   'Research & Design Methodologies': [
+    'Human-centered design',
+    'Design thinking',
+    'Empathy mapping',
+    'Learning journey mapping',
+    '"4 Paths" prototyping',
+    'Rapid prototyping',
+    'User testing & feedback integration',
+    'Iterative design',
+    'Community-based participatory design',
+    'Values-driven design',
+    'Universal design principles',
+  ],
+    'Project Management & Leadership': [
+    'Student team supervision',
+    'Cross-functional collaboration',
+    'Stakeholder engagement',
+    'Community partnership building',
+    'Grant writing & funding acquisition',
+    'Agile project management',
+    'Change management',
+  ],
+    'Pedagogical Frameworks': [
+    'Active learning theory',
+    'Constructivism',
+    'Critical pedagogy',
+    'Anti-perfectionism',
+    'Learner-centered design',
+    'Inclusive pedagogy',
+  ],
+}} colorToken="primary" />
+
+

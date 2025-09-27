@@ -1,0 +1,166 @@
+---
+import { Badge } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+
+interface Item {
+  label: string
+  icon?: string
+}
+
+interface Props {
+  // Either supply a flat list of items OR a categories record for grouped badges
+  items?: Array<string | Item>
+  categories?: Record<string, Array<string | Item>>
+  // Optional mapping of category names to named color tokens (primary|secondary|neutral)
+  categoryColors?: Record<string, 'primary' | 'secondary' | 'neutral'>
+  // Optional single color for all badges when provided (overrides categoryColors)
+  colorToken?: 'primary' | 'secondary' | 'neutral'
+  size?: 'sm' | 'md'
+}
+
+const { items = undefined, categories = undefined, categoryColors = {}, colorToken = undefined, size = 'md' } = Astro.props
+
+// Centralized icon map combining previous maps; keys are lowercased labels for convenience.
+const iconMap: Record<string, string> = {
+  // tech + tools
+  'github': 'lucide:github',
+  'jekyll': 'lucide:book-open',
+  'github pages': 'lucide:git-branch',
+  'html/css': 'lucide:code',
+  'html': 'lucide:code',
+  'css': 'lucide:css3',
+  'javascript': 'lucide:code',
+  'reveal.js': 'lucide:monitor',
+  'h5p': 'lucide:box',
+  'audacity': 'lucide:mic',
+  'video production & editing': 'lucide:video',
+  'video production': 'lucide:video',
+  'hype': 'lucide:film',
+  'web development': 'lucide:globe',
+  'wcag 2.0 accessibility standards': 'lucide:accessibility',
+  'responsive web design': 'lucide:smartphone',
+
+  // design & UX
+  'user experience (ux) design': 'lucide:user',
+  'instructional design': 'lucide:book-open',
+  'inclusive design': 'lucide:accessibility',
+  'participatory design': 'lucide:users',
+  'storyboarding': 'lucide:pencil',
+  'rapid prototyping': 'lucide:zap',
+  'design thinking': 'lucide:lightbulb',
+  'empathy mapping': 'lucide:heart',
+  'learning journey mapping': 'lucide:map',
+  '"4 paths" prototyping': 'lucide:zap',
+  'user testing & feedback integration': 'lucide:search',
+
+  // media
+  'audio production': 'lucide:headphones',
+  'social media': 'lucide:share-2',
+  'interactive media design': 'lucide:monitor',
+  'animation': 'lucide:film',
+
+  // leadership & project management
+  'student team supervision': 'lucide:user-check',
+  'cross-functional collaboration': 'lucide:users',
+  'stakeholder engagement': 'lucide:handshake',
+  'community partnership building': 'lucide:users',
+  'grant writing': 'lucide:file-text',
+  'agile project management': 'lucide:calendar',
+  'change management': 'lucide:refresh-ccw',
+
+  // pedagogy & theory
+  'active learning theory': 'lucide:book-open',
+  'constructivism': 'lucide:layers',
+  'critical pedagogy': 'lucide:search',
+  'learner-centered design': 'lucide:user',
+  'inclusive pedagogy': 'lucide:accessibility',
+}
+
+// Alias map: map alternate phrasings to canonical iconMap keys
+const aliasMap: Record<string, string> = {
+  // tech aliases
+  'h5p (interactive content authoring)': 'h5p',
+  'h5p': 'h5p',
+  'audacity (audio editing)': 'audacity',
+  'animation software': 'animation',
+  'git/github workflow': 'github',
+  'git/github': 'github',
+  'github pages': 'github pages',
+  'html/css': 'html/css',
+
+  // media/design aliases
+  'audio engineering': 'audio production',
+  'social media content creation': 'social media',
+  'video production & editing': 'video production & editing',
+  'video production': 'video production',
+
+  // research/methodology aliases
+  'human-centered design': 'user experience (ux) design',
+  'ux design': 'user experience (ux) design',
+  'user experience': 'user experience (ux) design',
+  'community-based participatory design': 'participatory design',
+  'values-driven design': 'learner-centered design',
+  'user testing': 'user testing & feedback integration',
+  'iterative design': 'rapid prototyping',
+  '4 paths prototyping': '"4 paths" prototyping',
+}
+
+const colorTokenToStyle = (token: string | undefined) => {
+  if (!token) return ''
+  switch (token) {
+    case 'primary':
+      return 'background-color: var(--color-primary-100); color: var(--foreground-color); border: 1px solid var(--border-color-subtle);'
+    case 'secondary':
+      return 'background-color: var(--color-secondary-100); color: var(--foreground-color); border: 1px solid var(--border-color-subtle);'
+    case 'neutral':
+      return 'background-color: var(--color-neutral-200); color: var(--foreground-color); border: 1px solid var(--border-color-subtle);'
+    default:
+      return ''
+  }
+}
+
+const normalize = (it: string | Item): Item => {
+  if (typeof it === 'string') {
+    const rawKey = it.toLowerCase()
+    const canonical = aliasMap[rawKey] || rawKey
+    return { label: it, icon: iconMap[canonical] }
+  }
+  const rawKey = it.label.toLowerCase()
+  const canonical = aliasMap[rawKey] || rawKey
+  return { label: it.label, icon: it.icon || iconMap[canonical] }
+}
+---
+
+{categories ? (
+  <div class="grid grid-cols-1 gap-6">
+    {Object.entries(categories).map(([category, items]) => (
+      <section>
+        <h3 class="heading h4">{category}</h3>
+        <div class="mt-3 flex flex-wrap gap-3 items-center">
+          {items.map((it) => {
+            const item = normalize(it)
+            const style = colorTokenToStyle(categoryColors[category])
+            return (
+              <Badge type="default" size={size} class="flex items-center gap-2" style={style}>
+                {item.icon ? <Icon name={item.icon} aria-hidden="true" /> : null}
+                <span>{item.label}</span>
+              </Badge>
+            )
+          })}
+        </div>
+      </section>
+    ))}
+  </div>
+) : (
+  <div class="flex flex-wrap gap-3 items-center">
+    {(items || []).map((it) => {
+      const item = normalize(it)
+      return (
+        <Badge type="default" size={size} class="flex items-center gap-2">
+          {item.icon ? <Icon name={item.icon} aria-hidden="true" /> : null}
+          <span>{item.label}</span>
+        </Badge>
+      )
+    })}
+  </div>
+)}

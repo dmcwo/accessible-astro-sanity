@@ -57,8 +57,9 @@
   // @link https://utopia.fyi/type/calculator?c=320,16,1.2,1240,18,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
   --font-size--2: clamp(0.6944rem, 0.6855rem + 0.0446vw, 0.72rem);
   --font-size--1: clamp(0.8331rem, 0.8099rem + 0.1163vw, 0.9rem);
-  --font-size-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
-  --font-size-1: clamp(1.2rem, 1.1283rem + 0.3587vw, 1.4063rem);
+  // Slightly increased base sizes for improved legibility (≈ +6.25%)
+  --font-size-0: clamp(1.0625rem, 1.018rem + 0.2174vw, 1.1875rem);
+  --font-size-1: clamp(1.275rem, 1.1985rem + 0.3587vw, 1.493rem);
   --font-size-2: clamp(1.44rem, 1.3293rem + 0.5533vw, 1.7581rem);
   --font-size-3: clamp(1.7281rem, 1.5649rem + 0.8163vw, 2.1975rem);
   --font-size-4: clamp(2.0738rem, 1.8396rem + 1.1707vw, 2.7469rem);
@@ -82,6 +83,9 @@
   --space-3xl: clamp(6rem, 5.7391rem + 1.3043vw, 6.75rem);
   --space-4xl: clamp(8rem, 7.6522rem + 1.7403vw, 8.25rem);
   --space-5xl: clamp(10rem, 9.5652rem + 2.1741vw, 10.5rem);
+
+  // line-height variables (body default)
+  --line-height-0: 1.5;
 
   // grid
   // https://utopia.fyi/grid/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l&g=s,l,xl,12
