@@ -28,6 +28,8 @@ const {
 
     <!-- Enable Astro View Transitions for all browsers -->
     <ClientRouter />
+    <!-- Load critical CSS that defines root font-size variables; placed here so it can reliably override compiled bundles -->
+    <link rel="stylesheet" href="/css/critical.css" />
   </head>
   <body>
     <Header />

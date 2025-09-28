@@ -1,0 +1,5 @@
+/* Critical root variables to ensure consistent font sizing across bundles */
+:root {
+  --font-size-0: clamp(1.1625rem, 1.018rem + 0.2174vw, 1.1875rem);
+  --font-size-1: clamp(1.275rem, 1.1985rem + 0.3587vw, 1.493rem);
+}
